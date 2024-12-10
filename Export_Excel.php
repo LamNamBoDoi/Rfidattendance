@@ -5,7 +5,7 @@ require'connectDB.php';
 $output = '';
 
 if(isset($_POST["To_Excel"])){
-  
+    
     $searchQuery = " ";
     $Start_date = " ";
     $End_date = " ";
@@ -13,60 +13,62 @@ if(isset($_POST["To_Excel"])){
     $End_time = " ";
     $card_sel = " ";
 
-    //Start date filter
-    if ($_POST['date_sel_start'] != 0) {
+    // Lọc theo ngày bắt đầu
+    if (!empty($_POST['date_sel_start'])) {
         $Start_date = $_POST['date_sel_start'];
         $_SESSION['searchQuery'] = "checkindate='".$Start_date."'";
-    }
-    else{
+    } else {
         $Start_date = date("Y-m-d");
         $_SESSION['searchQuery'] = "checkindate='".date("Y-m-d")."'";
     }
-    //End date filter
-    if ($_POST['date_sel_end'] != 0) {
+    // Lọc theo ngày kết thúc
+    if (!empty($_POST['date_sel_end'])) {
         $End_date = $_POST['date_sel_end'];
         $_SESSION['searchQuery'] = "checkindate BETWEEN '".$Start_date."' AND '".$End_date."'";
     }
-    //Time-In filter
+    // Kiểm tra thời gian vào
     if ($_POST['time_sel'] == "Time_in") {
-      //Start time filter
-      if ($_POST['time_sel_start'] != 0 && $_POST['time_sel_end'] == 0) {
-          $Start_time = $_POST['time_sel_start'];
-          $_SESSION['searchQuery'] .= " AND timein='".$Start_time."'";
+        if (!empty($_POST['time_sel_start']) && !empty($_POST['time_sel_end'])) {
+            $Start_time = $_POST['time_sel_start'].":00";
+            $End_time = $_POST['time_sel_end'].":00";
+
+            // Nếu thời gian bắt đầu lớn hơn hoặc bằng thời gian kết thúc
+            if ($Start_time >= $End_time) {
+                echo '<p class="error">Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc.</p>';
+            } else {
+                $_SESSION['searchQuery'] .= " AND timein BETWEEN '".$Start_time."' AND '".$End_time."'";
+            }
+        } elseif (!empty($_POST['time_sel_start'])) {
+            $Start_time = $_POST['time_sel_start'].":00";
+            $_SESSION['searchQuery'] .= " AND timein='".$Start_time."'";
+        }
       }
-      elseif ($_POST['time_sel_start'] != 0 && $_POST['time_sel_end'] != 0) {
-          $Start_time = $_POST['time_sel_start'];
-      }
-      //End time filter
-      if ($_POST['time_sel_end'] != 0) {
-          $End_time = $_POST['time_sel_end'];
-          $_SESSION['searchQuery'] .= " AND timein BETWEEN '".$Start_time."' AND '".$End_time."'";
-      }
-    }
-    //Time-out filter
+    // Kiểm tra thời gian ra
     if ($_POST['time_sel'] == "Time_out") {
-      //Start time filter
-      if ($_POST['time_sel_start'] != 0 && $_POST['time_sel_end'] == 0) {
-          $Start_time = $_POST['time_sel_start'];
-          $_SESSION['searchQuery'] .= " AND timeout='".$Start_time."'";
+        if (!empty($_POST['time_sel_start']) && !empty($_POST['time_sel_end'])) {
+            $Start_time = $_POST['time_sel_start'].":00";
+            $End_time = $_POST['time_sel_end'].":00";
+
+            // Nếu thời gian bắt đầu lớn hơn hoặc bằng thời gian kết thúc
+            if ($Start_time >= $End_time) {
+                echo '<p class="error">Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc.</p>';
+            } else {
+                $_SESSION['searchQuery'] .= " AND timeout BETWEEN '".$Start_time."' AND '".$End_time."'";
+            }
+        } elseif (!empty($_POST['time_sel_start'])) {
+            $Start_time = $_POST['time_sel_start'].":00";
+            $_SESSION['searchQuery'] .= " AND timeout='".$Start_time."'";
+        }
       }
-      elseif ($_POST['time_sel_start'] != 0 && $_POST['time_sel_end'] != 0) {
-          $Start_time = $_POST['time_sel_start'];
-      }
-      //End time filter
-      if ($_POST['time_sel_end'] != 0) {
-          $End_time = $_POST['time_sel_end'];
-          $_SESSION['searchQuery'] .= " AND timeout BETWEEN '".$Start_time."' AND '".$End_time."'";
-      }
+    // Lọc theo thẻ
+    if (!empty($_POST['card_sel']) && $_POST['card_sel'] != 0) {
+        $Card_sel = $_POST['card_sel'];
+        $_SESSION['searchQuery'] .= " AND card_uid='".$Card_sel."'";
     }
-    //Card filter
-    if ($_POST['card_sel'] != 0) {
-        $card_sel = $_POST['card_sel'];
-        $_SESSION['searchQuery'] .= " AND card_uid='".$card_sel."'";
-    }
-    //Department filter
-    if ($_POST['dev_sel'] != 0) {
-        $dev_uid = $_POST['dev_sel'];
+
+    // Lọc theo phòng ban
+    if (!empty($_POST['dev_uid']) && $_POST['dev_uid'] != 0) {
+        $dev_uid = $_POST['dev_uid'];
         $_SESSION['searchQuery'] .= " AND device_uid='".$dev_uid."'";
     }
 

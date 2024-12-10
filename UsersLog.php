@@ -1,3 +1,4 @@
+ <!-- Kiểm tra đăng nhập -->
 <?php
 session_start();
 if (!isset($_SESSION['Admin-name'])) {
@@ -15,18 +16,20 @@ if (!isset($_SESSION['Admin-name'])) {
 
     <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha1256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous">
     </script>   
     <script type="text/javascript" src="js/bootbox.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script src="js/user_log.js"></script>
+    <!-- Hàm sử lý kích thước của header khi nội dung thay đổi -->
     <script>
       $(window).on("load resize ", function() {
         var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
         $('.tbl-header').css({'padding-right':scrollWidth});
     }).resize();
     </script>
+    <!-- Yêu cầu ajax -->
     <script>
       $(document).ready(function(){
         $.ajax({
@@ -38,7 +41,7 @@ if (!isset($_SESSION['Admin-name'])) {
           }).done(function(data) {
             $('#userslog').html(data);
           });
-
+        // lặp lại yêu cầu ajax mỗi 5 giây
         setInterval(function(){
           $.ajax({
             url: "user_log_up.php",
@@ -55,7 +58,7 @@ if (!isset($_SESSION['Admin-name'])) {
 </head>
 <body>
 <?php include'header.php'; ?> 
-<section class="container py-lg-5">>
+<section class="container py-lg-5">
   <!--User table-->
     <h1 class="slideInDown animated">Here are the Users daily logs</h1>
     <div class="form-style-5">
@@ -75,6 +78,7 @@ if (!isset($_SESSION['Admin-name'])) {
             <div class="modal-body">
               <div class="container-fluid">
                 <div class="row">
+                  <!-- Lọc theo ngày -->
                   <div class="col-lg-6 col-sm-6">
                     <div class="panel panel-primary">
                       <div class="panel-heading">Filter By Date:</div>
@@ -86,6 +90,7 @@ if (!isset($_SESSION['Admin-name'])) {
                       </div>
                     </div>
                   </div>
+                  <!-- Lọc theo giờ -->
                   <div class="col-lg-6 col-sm-6">
                     <div class="panel panel-primary">
                       <div class="panel-heading">
@@ -97,6 +102,7 @@ if (!isset($_SESSION['Admin-name'])) {
                           <label for="radio-two">Time-out</label>
                         </div>
                       </div>
+                      <!-- Lọc theo thời gian -->
                       <div class="panel-body">
                         <label for="Start-Time"><b>Select from this Time:</b></label>
                         <input type="time" name="time_sel_start" id="time_sel_start">
@@ -109,6 +115,7 @@ if (!isset($_SESSION['Admin-name'])) {
                 <div class="row">
                   <div class="col-lg-4 col-sm-12">
                     <label for="Fingerprint"><b>Filter By User:</b></label>
+                    <!-- Lọc người dùng -->
                     <select class="card_sel" name="card_sel" id="card_sel">
                       <option value="0">All Users</option>
                       <?php
@@ -132,6 +139,7 @@ if (!isset($_SESSION['Admin-name'])) {
                   </div>
                   <div class="col-lg-4 col-sm-12">
                     <label for="Device"><b>Filter By Device department:</b></label>
+                    <!-- Lọc thiết bị -->
                     <select class="dev_sel" name="dev_sel" id="dev_sel">
                       <option value="0">All Departments</option>
                       <?php

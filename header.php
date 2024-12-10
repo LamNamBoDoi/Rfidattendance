@@ -55,7 +55,7 @@
 	  }
 ?>
 <div class="topnav" id="myTopnav">
-	<a href="index.php">Users</a>
+		<a href="index.php">Users</a>
     <a href="ManageUsers.php">Manage Users</a>
     <a href="UsersLog.php">Users Log</a>
     <a href="devices.php">Devices</a>
@@ -96,23 +96,26 @@
         </button>
       </div>
       <form action="ac_update.php" method="POST" enctype="multipart/form-data">
-	      <div class="modal-body">
-	      	<label for="User-mail"><b>Admin Name:</b></label>
-	      	<input type="text" name="up_name" placeholder="Enter your Name..." value="<?php echo $_SESSION['Admin-name']; ?>" required/><br>
-	      	<label for="User-mail"><b>Admin E-mail:</b></label>
-	      	<input type="email" name="up_email" placeholder="Enter your E-mail..." value="<?php echo $_SESSION['Admin-email']; ?>" required/><br>
-	      	<label for="User-psw"><b>Password</b></label>
-	      	<input type="password" name="up_pwd" placeholder="Enter your Password..." required/><br>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="submit" name="update" class="btn btn-success">Save changes</button>
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	      </div>
-	  </form>
+          <div class="modal-body">
+            <label for="User-mail"><b>Admin Name:</b></label>
+            <input type="text" name="up_name" placeholder="Enter your Name..." value="<?php echo $_SESSION['Admin-name']; ?>" required/><br>
+            <label for="User-mail"><b>Admin E-mail:</b></label>
+            <input type="email" name="up_email" placeholder="Enter your E-mail..." value="<?php echo $_SESSION['Admin-email']; ?>" required/><br>
+            <label for="User-psw"><b>Password</b></label>
+            <input type="password" name="up_pwd" placeholder="Enter your Password..." required/><br>
+            <label for="User-psw-new"><b>New Password (optional)</b></label>
+            <input type="password" name="up_pwd_new" placeholder="Enter new Password if you want to change..." /><br>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" name="update" class="btn btn-success">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+      </form>
     </div>
   </div>
 </div>
 <!-- //Account Update -->
+
 	
 
 	

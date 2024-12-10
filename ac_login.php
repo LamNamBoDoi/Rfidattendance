@@ -28,6 +28,7 @@ if (isset($_POST['login'])) {
 			$resultl = mysqli_stmt_get_result($result);
 
 			if ($row = mysqli_fetch_assoc($resultl)) {
+				// so sánh mật khẩu
 				$pwdCheck = password_verify($Userpass, $row['admin_pwd']);
 				if ($pwdCheck == false) {
 					header("location: login.php?error=wrongpassword");
