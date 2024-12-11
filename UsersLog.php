@@ -11,7 +11,7 @@ if (!isset($_SESSION['Admin-name'])) {
     <title>Users Logs</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="icon" type="image/png" href="icon/ok_check.png"> -->
+    <link rel="icon" type="image/png" href="icon/ok_check.png">
     <link rel="stylesheet" type="text/css" href="css/userslog.css">
 
     <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>

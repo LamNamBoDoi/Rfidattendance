@@ -122,12 +122,3 @@ session_start();
   </table>
 </div>
 
-<style>
-  .error {
-    color: #fff;
-    background-color: #d9534f; /* Màu đỏ */
-    padding: 5px;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-</style>
