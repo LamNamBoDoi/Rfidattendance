@@ -107,7 +107,7 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                     }
                 }
             }
-            else if ($device_mode == 0) {
+            else if ($device_mode == 0)  {
                 //New Card has been added
                 $sql = "SELECT * FROM users WHERE card_uid=?";
                 $result = mysqli_stmt_init($conn);
