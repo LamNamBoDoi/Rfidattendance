@@ -52,7 +52,7 @@ if (!isset($_SESSION['Admin-name'])) {
 		<div class="row">
 			<div class="col-lg-12 mt-4">
 				<div class="panel">
-			      <div class="panel-heading" style="font-size: 19px;">Thiết bị của bạn
+			      <div class="panel-heading" style="font-size: 19px;">Chọn chế độ thêm sinh viên hoặc điểm danh
 			      	<button type="button" class="btn-add btn-success" data-toggle="modal" data-target="#new-device" style="font-size: 18px; float: right; margin-top: -6px;">Thêm mới</button>
 			      </div>
 			      <div class="panel-body">

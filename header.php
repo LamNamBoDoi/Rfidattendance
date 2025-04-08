@@ -7,7 +7,7 @@
 <header>
 <div class="header">
 	<div class="logo">
-		<a href="index.php">ATTENDENCE SYSTEM</a>
+		<a href="index.php">ATTENDANCE SYSTEM</a>
 	</div>
 </div>
 <?php  
@@ -58,7 +58,7 @@
 		<a href="index.php">Danh sách người dùng</a>
     <a href="ManageUsers.php">Quản lý người dùng</a>
     <a href="UsersLog.php">Nhật ký đăng nhập người dùng</a>
-    <a href="devices.php">Thiết bị</a>
+    <a href="devices.php">Lớp học</a>
     <?php  
     	if (isset($_SESSION['Admin-name'])) {
     		echo '<a href="#" data-toggle="modal" data-target="#admin-account">'.$_SESSION['Admin-name'].'</a>';

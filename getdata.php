@@ -1,24 +1,32 @@
 <?php  
 //Connect to database
 require 'connectDB.php';
+//Thiet lap mui gio
 date_default_timezone_set('Asia/Jakarta');
 $d = date("Y-m-d");
 $t = date("H:i:sa");
 
+// Kiểm tra các tham số có tồn tại ko
 if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
     
     $card_uid = $_GET['card_uid'];
     $device_uid = $_GET['device_token'];
     $sql = "SELECT * FROM devices WHERE device_uid=?";
+    // tạo đối tượng  
     $result = mysqli_stmt_init($conn);
+    // chuẩn bị 1 câu lệnh sql để thực thi
     if (!mysqli_stmt_prepare($result, $sql)) {
         echo "SQL_Error_Select_device";
         exit();
     }
     else{
+        // gán trị trị tham số
         mysqli_stmt_bind_param($result, "s", $device_uid);
+        // thực thi
         mysqli_stmt_execute($result);
+        // lấy kết quả câu lệnh chuẩn bị
         $resultl = mysqli_stmt_get_result($result);
+        // duyệt qua các phần tử
         if ($row = mysqli_fetch_assoc($resultl)){
             $device_mode = $row['device_mode'];
             $device_dep = $row['device_dep'];
@@ -54,7 +62,6 @@ if (isset($_GET['card_uid']) && isset($_GET['device_token'])) {
                                     //*****************************************************
                                     //Login
                                     if (!$row = mysqli_fetch_assoc($resultl)){
-
                                         $sql = "INSERT INTO users_logs (username, serialnumber, card_uid, device_uid, device_dep, checkindate, timein, timeout) VALUES (? ,?, ?, ?, ?, ?, ?, ?)";
                                         $result = mysqli_stmt_init($conn);
                                         if (!mysqli_stmt_prepare($result, $sql)) {

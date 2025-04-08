@@ -6,7 +6,7 @@ session_start();
 		<thead>
 	      <tr>
 	        <th>Tên thiết bị</th>
-	        <th>Mã phòng</th>
+	        <th>Mã lớp</th>
 	        <th>Mã thiết bị</th>
 	        <th>Ngày thêm</th>
 	        <th>Chế độ</th>
