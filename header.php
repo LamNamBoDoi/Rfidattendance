@@ -55,9 +55,9 @@
 	  }
 ?>
 <div class="topnav" id="myTopnav">
-		<a href="index.php">Danh sách người dùng</a>
-    <a href="ManageUsers.php">Quản lý người dùng</a>
-    <a href="UsersLog.php">Nhật ký đăng nhập người dùng</a>
+		<a href="index.php">Danh sách sinh viên</a>
+    <a href="ManageUsers.php">Quản lý sinh viên</a>
+    <a href="UsersLog.php">Nhật ký điểm danh sinh viên</a>
     <a href="devices.php">Lớp học</a>
     <?php  
     	if (isset($_SESSION['Admin-name'])) {

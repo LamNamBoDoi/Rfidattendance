@@ -1,4 +1,4 @@
- <!-- Kiểm tra đăng nhập -->
+ <!-- Kiểm tra điểm danh -->
 <?php
 session_start();
 if (!isset($_SESSION['Admin-name'])) {
@@ -60,16 +60,16 @@ if (!isset($_SESSION['Admin-name'])) {
 <?php include'header.php'; ?> 
 <section class="container py-lg-5">
   <!--User table-->
-    <h1 class="slideInDown animated">Nhật ký đăng nhập người dùng</h1>
+    <h1 class="slideInDown animated">Nhật ký điểm danh của sinh viên</h1>
     <div class="form-style-5">
-      <button type="button" data-toggle="modal" data-target="#Filter-export">Lọc Nhật ký/ Xuat file Excel</button>
+      <button type="button" data-toggle="modal" data-target="#Filter-export">Lọc Nhật ký/ Xuất file Excel</button>
     </div>
     <!-- Log filter -->
     <div class="modal fade bd-example-modal-lg" id="Filter-export" tabindex="-1" role="dialog" aria-labelledby="Filter/Export" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg animate" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLongTitle">Lọc nhật ký người dùng:</h3>
+            <h3 class="modal-title" id="exampleModalLongTitle">Lọc nhật ký sinh viên:</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -114,10 +114,10 @@ if (!isset($_SESSION['Admin-name'])) {
                 </div>
                 <div class="row">
                   <div class="col-lg-4 col-sm-12">
-                    <label for="Fingerprint"><b>Lọc theo người dùng:</b></label>
+                    <label for="Fingerprint"><b>Lọc theo sinh viên:</b></label>
                     <!-- Lọc người dùng -->
                     <select class="card_sel" name="card_sel" id="card_sel">
-                      <option value="0">Tât cả người dùng</option>
+                      <option value="0">Tât cả sinh viên</option>
                       <?php
                         require'connectDB.php';
                         $sql = "SELECT * FROM users WHERE add_card=1 ORDER BY id ASC";

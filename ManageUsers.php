@@ -47,12 +47,12 @@ if (!isset($_SESSION['Admin-name'])) {
 <body>
 <?php include'header.php';?>
 <main>
-	<h1 class="slideInDown animated">Quản lý người dùng</h1>
+	<h1 class="slideInDown animated">Quản lý sinh viên</h1>
 	<div class="form-style-5 slideInDown animated">
 		<form enctype="multipart/form-data">
 			<div class="alert_user"></div>
 			<fieldset>
-				<legend><span class="number">1</span> Thông tin người dùng</legend>
+				<legend><span class="number">1</span> Thông tin sinh viên</legend>
 				<input type="hidden" name="user_id" id="user_id">
 				<input type="text" name="name" id="name" placeholder="User Name...">
 				<input type="text" name="number" id="number" placeholder="Serial Number...">
